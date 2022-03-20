@@ -7,7 +7,6 @@
   "search.exclude": {
     "**/node_modules": true
   },
-  "cSpell.words": ["palmetto"],
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "prettier.eslintIntegration": true,
   "editor.formatOnSave": true,
