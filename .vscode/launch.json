@@ -1,0 +1,30 @@
+{
+  "configurations": [
+    {
+      "name": "Launch Chrome - App",
+      "request": "launch",
+      "type": "pwa-chrome",
+      "url": "http://localhost:3000",
+      "webRoot": "${workspaceFolder}"
+    },
+    {
+      "name": "Launch Chrome - Storybook",
+      "request": "launch",
+      "type": "pwa-chrome",
+      "url": "http://localhost:6006",
+      "webRoot": "${workspaceFolder}"
+    },
+    {
+      "type": "node",
+      "name": "vscode-jest-tests",
+      "request": "launch",
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen",
+      "disableOptimisticBPs": true,
+      "runtimeExecutable": "yarn",
+      "protocol": "inspector",
+      "cwd": "${workspaceFolder}",
+      "args": ["test", "react-scripts", "test", "--coverage", "--runInBand", "--watchAll=false"]
+    }
+  ]
+}
