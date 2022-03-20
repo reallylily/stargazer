@@ -7,7 +7,7 @@
   "search.exclude": {
     "**/node_modules": true
   },
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  // "editor.defaultFormatter": "esbenp.prettier-vscode",
   "prettier.eslintIntegration": true,
   "editor.formatOnSave": true,
   "editor.codeActionsOnSave": {

@@ -14,7 +14,7 @@ export const App: React.FC = () => {
     <div className="App">
       <header className="App-header">
         <p>
-        Edit <code>src/App.js</code> and save to heeeeeeeere.
+          Edit <code>src/App.js</code> and save to heeeeeeeere.
         </p>
         <a
           className="App-link"
@@ -31,9 +31,9 @@ export const App: React.FC = () => {
 
 const ConnectedApp: React.FC = () => (
   <ErrorBoundary>
-      <ApiProvider>
-                <App />
-      </ApiProvider>
+    <ApiProvider>
+      <App />
+    </ApiProvider>
   </ErrorBoundary>
 );
 export default ConnectedApp;
