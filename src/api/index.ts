@@ -1,28 +1,43 @@
-import axios, { AxiosResponse } from 'axios';
+// TODO: allow canceling requests (for when a user clicks the next/back arrows repeatedly
 
+import { gql, GraphQLClient } from 'graphql-request';
 
-const BASE_URL = `someurl`;
+// import { PlatformConfig } from 'config';
 
-const TIMEOUT = 30000; // timeout the API request after 30 seconds
+const endpoint = `https://api.github.com/graphql`;
 
-type HttpMethods = 'get' | 'post' | 'patch' | 'put' | 'delete';
+const graphQLClient = new GraphQLClient(endpoint, {
+  headers: {
+    Authorization: `Bearer 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`,
+    // Authorization: `Bearer ${process.env.API_KEY}`,
+  },
+});
 
-interface Request {
+interface GQLRequest {
   data?: unknown;
-  headers?: { [key: string]: unknown };
-  method?: HttpMethods;
-  params?: unknown;
-  url: string;
 }
 
-export default function request({ data, method = 'get', params, url }: Request): Promise<AxiosResponse> {
-  const reqUrl = `${BASE_URL}${url}`;
+const defaultGQL = gql`
+  query {
+    viewer {
+      login
+    }
+  }
+`;
 
-  return axios({
-    data,
-    method,
-    params,
-    timeout: TIMEOUT,
-    url: reqUrl,
-  });
+export default function request(query = defaultGQL): Promise<any> {
+  return graphQLClient.request(query);
 }
+
+// export default function request({ data }: GQLRequest): Promise<any> {
+//   console.log(data);
+//   return graphQLClient.request(
+//     gql`
+//       query {
+//         viewer {
+//           login
+//         }
+//       }
+//     `,
+//   );
+// }
