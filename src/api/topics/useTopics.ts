@@ -2,18 +2,11 @@ import { AxiosError } from 'axios';
 import { GraphQLClient, gql } from 'graphql-request';
 import { useQuery, useMutation, UseMutateFunction, useQueryClient } from 'react-query';
 
+import request from 'api/index';
 import { getFriendlyError } from 'utils/error';
 // import { PlatformConfig } from 'config';
 
 export const QUERY_KEY = 'topics';
-const endpoint = `https://api.github.com/graphql`;
-
-const graphQLClient = new GraphQLClient(endpoint, {
-  headers: {
-    Authorization: `bearer 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`,
-    // Authorization: `Bearer ${process.env.API_KEY}`,
-  },
-});
 
 console.log(process.env.API_KEY);
 
@@ -28,41 +21,36 @@ export interface UseTopics {
   reload: () => void;
 }
 
-// topic(name: "react") {
-//   name
-//   id
-//   stargazerCount
-//   stargazers {
-//     totalCount
-//   }
-//   relatedTopics(first: 10) {
-//     id
-//   }
-// }
-// }
+const makeSearchQuery = (term = 'react') => {
+  return gql`
+  query {
+    topic(name: "${term}") {
+      id
+      name
+      relatedTopics(first: 10) {
+        name
+        id
+        stargazerCount
+      }
+      stargazerCount
+    }
+  }
+  `;
+};
 
-// async function updateTask(params: UpdateOnboardingTaskParams): Promise<void> {
-//   const { data, name } = params;
-//   await request({ data, method: 'put', url: `${ENDPOINT}/${name}` });
-// }
+export async function getTopics(searchTerm?: string): Promise<any> {
+  const query = makeSearchQuery(searchTerm);
+  console.log(query);
+  const response = await request(query);
+  return response;
+}
 
 export const useTopics = (searchTerm?: string): UseTopics => {
   const queryClient = useQueryClient();
 
   const { isLoading, isFetched, error, data } = useQuery<any, AxiosError, any>(
     [QUERY_KEY, searchTerm],
-    async () => {
-      const { viewer } = await graphQLClient.request(
-        gql`
-          query {
-            viewer {
-              login
-            }
-          }
-        `,
-      );
-      return viewer;
-    },
+    () => getTopics(searchTerm),
     {},
   );
 
