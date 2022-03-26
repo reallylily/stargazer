@@ -1,6 +1,5 @@
 import React from 'react';
 
-
 export interface Props {
   children: React.ReactNode;
 }
@@ -25,10 +24,7 @@ class ErrorBoundary extends React.Component<Props, State> {
 
   public render(): React.ReactNode {
     if (this.state.error) {
-      return <div>
-        error={this.state.error}
-        
-      </div> 
+      return <div>error={this.state.error}</div>;
     }
     return this.props.children;
   }

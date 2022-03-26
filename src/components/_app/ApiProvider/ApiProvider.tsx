@@ -1,3 +1,4 @@
+import { GraphQLClient } from 'graphql-request';
 import React from 'react';
 import { QueryCache, QueryClient, QueryClientProvider } from 'react-query';
 
@@ -12,6 +13,14 @@ queryCache.clear();
 export interface Props {
   children?: React.ReactNode;
 }
+
+// const endpoint = `https://api.github.com/graphql`;
+
+// const graphQLClient = new GraphQLClient(endpoint, {
+//   headers: {
+//     Authorization: `Bearer ${process.env.API_KEY}`,
+//   },
+// });
 
 const ApiProvider: React.FC<Props> = ({ children }: Props) => {
   const queryClient = new QueryClient({
