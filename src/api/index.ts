@@ -3,7 +3,7 @@ import { gql, GraphQLClient } from 'graphql-request';
 // import { PlatformConfig } from 'config';
 
 const endpoint = `https://api.github.com/graphql`;
-const token = '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';
+const token = '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';
 
 const graphQLClient = new GraphQLClient(endpoint, {
   headers: {

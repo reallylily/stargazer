@@ -8,3 +8,5 @@ export interface Topic {
   relatedTopics?: Topic[];
   stargazerCount: number;
 }
+
+export default ApiTopic;

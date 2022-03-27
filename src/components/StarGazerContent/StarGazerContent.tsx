@@ -3,6 +3,7 @@ import React from 'react';
 import styles from './StarGazerContent.module.scss';
 import useSearch from 'api/search/useSearch';
 import Select from 'components/Select/Select';
+import Topic from 'components/Topic/Topic';
 import Loading from 'pages/Loading/Loading';
 
 export const StarGazerContent: React.FC = () => {
@@ -20,7 +21,6 @@ export const StarGazerContent: React.FC = () => {
   // if (!isLoading && !data) {
   //   return <div>Sorry no StarGazerContents availible for that search</div>;
   // }
-  console.log(data);
 
   return (
     <div>
@@ -30,6 +30,7 @@ export const StarGazerContent: React.FC = () => {
           Search
         </button>
       </div>
+      <Topic topic={data} />
       {data && <div>{data.topic?.name}</div>}
     </div>
   );
