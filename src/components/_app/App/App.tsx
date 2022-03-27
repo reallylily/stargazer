@@ -1,13 +1,13 @@
 import React from 'react';
 
-import useTopics from 'api/topics/useTopics';
+import useSearch from 'api/search/useSearch';
 import ApiProvider from 'components/_app/ApiProvider/ApiProvider';
 import ErrorBoundary from 'components/_app/ErrorBoundary/ErrorBoundary';
 
 // import styles from './App.module.scss';
 
 export const App: React.FC = () => {
-  const { data, isLoading, error } = useTopics();
+  const { data, isLoading, error } = useSearch();
   return (
     <div className="App">
       <header className="App-header">

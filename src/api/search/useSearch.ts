@@ -7,9 +7,9 @@ import { getFriendlyError } from 'utils/error';
 
 // import { PlatformConfig } from 'config';
 
-export const QUERY_KEY = 'topics';
+export const QUERY_KEY = 'topic';
 
-export interface UseTopics {
+export interface UseSearch {
   data?: any;
   error?: string;
   isLoading: boolean;
@@ -40,18 +40,18 @@ export interface ApiTopics {
   };
 }
 
-export async function getTopics(searchTerm?: string): Promise<ApiTopics> {
+export async function getSearch(searchTerm?: string): Promise<ApiTopics> {
   const query = makeSearchQuery(searchTerm);
   const response = await request(query);
   return response;
 }
 
-export const useTopics = (searchTerm?: string): UseTopics => {
+export const useSearch = (searchTerm?: string): UseSearch => {
   const queryClient = useQueryClient();
 
   const { isLoading, isFetched, error, data } = useQuery<ApiTopics, AxiosError, ApiTopics>(
     [QUERY_KEY, searchTerm],
-    () => getTopics(searchTerm),
+    () => getSearch(searchTerm),
     {},
   );
 
@@ -68,4 +68,4 @@ export const useTopics = (searchTerm?: string): UseTopics => {
   };
 };
 
-export default useTopics;
+export default useSearch;
