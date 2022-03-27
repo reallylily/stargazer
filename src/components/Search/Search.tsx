@@ -1,17 +1,18 @@
 import React from 'react';
 
 import useSearch from 'api/search/useSearch';
-import Stars from 'components/stars/stars';
+import Loading from 'pages/Loading/Loading';
 
-// import styles from './App.module.scss';
+import styles from './Search.module.scss';
 
-const Main: React.FC = () => {
-  const [searchTerm, setSearchTerm] = React.useState<string>('react');
+export const Search: React.FC = () => {
+  const [searchTerm, setSearchTerm] = React.useState<string>();
   const { data, isLoading, isFetched, error, reload } = useSearch(searchTerm);
-
+  if (isLoading) {
+    return <Loading />;
+  }
   return (
-    <div className="Main">
-      {console.log(data?.topic?.name, isLoading, error)}
+    <div className={styles.search}>
       {isFetched && <div>{data?.topic?.name}</div>}
       <button
         type="button"
@@ -23,9 +24,8 @@ const Main: React.FC = () => {
       >
         Search
       </button>
-      <Stars />
     </div>
   );
 };
 
-export default Main;
+export default Search;

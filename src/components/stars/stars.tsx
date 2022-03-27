@@ -1,8 +1,8 @@
 import React from 'react';
 
-import styles from './stars.module.scss';
+import styles from './Stars.module.scss';
 
-class Stars extends React.PureComponent {
+export class Stars extends React.PureComponent {
   render() {
     return (
       <div>
