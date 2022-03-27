@@ -63,7 +63,7 @@
       }
     ],
     "import/order": [
-      "error",
+      "warn",
       {
         "groups": ["object", "builtin", "external", "internal", "parent", "sibling", "index"],
         "newlines-between": "always",

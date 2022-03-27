@@ -1,15 +1,16 @@
 import React from 'react';
 
 import useSearch from 'api/search/useSearch';
+import Stars from 'components/stars/stars';
 
 // import styles from './App.module.scss';
 
-export const Main: React.FC = () => {
+const Main: React.FC = () => {
   const [searchTerm, setSearchTerm] = React.useState<string>('react');
   const { data, isLoading, isFetched, error, reload } = useSearch(searchTerm);
 
   return (
-    <div className="App">
+    <div className="Main">
       {console.log(data?.topic?.name, isLoading, error)}
       {isFetched && <div>{data?.topic?.name}</div>}
       <button
@@ -22,6 +23,7 @@ export const Main: React.FC = () => {
       >
         Search
       </button>
+      <Stars />
     </div>
   );
 };
