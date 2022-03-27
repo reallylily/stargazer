@@ -6,17 +6,5 @@
   "editor.tabSize": 2,
   "search.exclude": {
     "**/node_modules": true
-  },
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "[javascript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "editor.formatOnSave": true,
-  "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true,
-    "source.fixAll.stylelint": true
   }
-  // "jest.jestCommandLine": "yarn test",
-  // "stylelint.validate": ["css", "scss"],
-  // "stylelint.enable": true
 }
