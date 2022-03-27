@@ -7,6 +7,15 @@
   @return unquote($value);
 }
 
+@keyframes animStar {
+  from {
+    transform: translateY(0px);
+  }
+  to {
+    transform: translateY(-2000px);
+  }
+}
+
 $shadows-small: multiple-box-shadow(700);
 $shadows-medium: multiple-box-shadow(200);
 $shadows-big: multiple-box-shadow(100);
@@ -17,93 +26,13 @@ html {
   overflow: hidden;
 }
 
-// .stars {
-//   width: 1px;
-//   height: 1px;
-//   background: transparent;
-//   box-shadow: $shadows-small;
-//   animation: animStar 50s linear infinite;
+// .weather {
 
-//   &:after {
-//     content: ' ';
-//     position: absolute;
-//     top: 2000px;
-//     width: 1px;
-//     height: 1px;
-//     background: transparent;
-//     box-shadow: $shadows-small;
+//   .loading {
+//     margin: 20px;
+//     font-size: 30px;
 //   }
 // }
-
-// .stars2 {
-//   width: 2px;
-//   height: 2px;
-//   background: transparent;
-//   box-shadow: $shadows-medium;
-//   animation: animStar 100s linear infinite;
-
-//   &:after {
-//     content: ' ';
-//     position: absolute;
-//     top: 2000px;
-//     width: 2px;
-//     height: 2px;
-//     background: transparent;
-//     box-shadow: $shadows-medium;
-//   }
-// }
-
-// .stars3 {
-//   width: 3px;
-//   height: 3px;
-//   background: transparent;
-//   box-shadow: $shadows-big;
-//   animation: animStar 150s linear infinite;
-
-//   &:after {
-//     content: ' ';
-//     position: absolute;
-//     top: 2000px;
-//     width: 3px;
-//     height: 3px;
-//     background: transparent;
-//     box-shadow: $shadows-big;
-//   }
-// }
-
-.weather {
-  position: absolute;
-  top: 6.5rem;
-  left: 0;
-  right: 0;
-
-  color: #fff;
-  text-align: center;
-  font-family: 'lato', sans-serif;
-  font-weight: 300;
-  font-size: 50px;
-  letter-spacing: 0.4rem;
-
-  span {
-    background: -webkit-linear-gradient(white, #38495a);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-
-  .loading {
-    margin: 20px;
-    font-size: 30px;
-  }
-}
-
-@keyframes animStar {
-  from {
-    transform: translateY(0px);
-  }
-  to {
-    transform: translateY(-2000px);
-  }
-}
 
 // Basic Button Style
 .temperature {

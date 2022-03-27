@@ -1,10 +1,10 @@
 import React from 'react';
 
-import Main from './Main';
+import Topic from './Topic';
 
-const AppTest = (props: { loading?: boolean }) => (
+const AppTest = () => (
   // <TestProviders authProviderProps={{ loading: props.loading }}>
-  <Main />
+  <Topic />
   // </TestProviders>
 );
 

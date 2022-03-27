@@ -1,6 +1,6 @@
 import { AxiosError } from 'axios';
 import { gql } from 'graphql-request';
-import { useQuery, useQueryClient } from 'react-query';
+import { UseMutateFunction, useMutation, useQueryClient } from 'react-query';
 
 import request from 'api/index';
 import { getFriendlyError } from 'utils/error';
@@ -8,14 +8,23 @@ import { getFriendlyError } from 'utils/error';
 // import { PlatformConfig } from 'config';
 
 export const QUERY_KEY = 'topic';
+export interface ApiTopic {
+  topic: Topic;
+}
+
+export interface Topic {
+  id: string;
+  name: string;
+  relatedTopics?: Topic[];
+  stargazerCount: number;
+}
 
 export interface UseSearch {
-  data?: any;
+  data?: ApiTopic;
   error?: string;
   isLoading: boolean;
-  isFetched: boolean;
-  // search: UseMutateFunction<ApiTopics, AxiosError, string>;
-  reload: () => void;
+  search: UseMutateFunction<ApiTopic, AxiosError, string>;
+  clear: () => void;
 }
 
 const makeSearchQuery = (term = 'react') => {
@@ -35,48 +44,27 @@ const makeSearchQuery = (term = 'react') => {
   `;
 };
 
-export interface ApiTopics {
-  data: {
-    topic: unknown;
-  };
-}
-
-export async function getSearch(searchTerm?: string): Promise<ApiTopics> {
-  console.log(searchTerm);
+export async function getSearch(searchTerm?: string): Promise<ApiTopic> {
   const query = makeSearchQuery(searchTerm);
   const response = await request(query);
   return response;
 }
 
-export const useSearch = (searchTerm?: string): UseSearch => {
+export const useSearch = (): UseSearch => {
   const queryClient = useQueryClient();
-
-  const { isLoading, isFetched, error, data } = useQuery<ApiTopics, AxiosError, ApiTopics>(
-    [QUERY_KEY, searchTerm],
-    () => getSearch(searchTerm),
-    { enabled: Boolean(searchTerm) },
-  );
 
   const invalidateQueries = () => {
     queryClient.invalidateQueries(QUERY_KEY);
   };
 
-  // const {
-  //   mutate,
-  //   error: searchError,
-  //   isLoading: isSearching,
-  // } = useMutation<ApiTopics, AxiosError, string>([QUERY_KEY, searchTerm], () => getSearch(searchTerm), {
-  //   // } = useMutation<ApiTopics, AxiosError, string>([QUERY_KEY, searchTerm], () => getSearch(searchTerm), {
-  //   // onSuccess: invalidateQueries,
-  // });
+  const { data, mutate, error, isLoading } = useMutation<ApiTopic, AxiosError, string>([QUERY_KEY], getSearch, {});
 
   return {
     data,
     error: getFriendlyError(error, 'topics'),
     isLoading,
-    isFetched,
-    // search: mutate,
-    reload: invalidateQueries,
+    search: mutate,
+    clear: invalidateQueries,
   };
 };
 
