@@ -1,6 +1,6 @@
 import { AxiosError } from 'axios';
-import { GraphQLClient, gql } from 'graphql-request';
-import { useQuery, useMutation, UseMutateFunction, useQueryClient } from 'react-query';
+import { gql } from 'graphql-request';
+import { useQuery, useQueryClient } from 'react-query';
 
 import request from 'api/index';
 import { getFriendlyError } from 'utils/error';
@@ -40,7 +40,6 @@ const makeSearchQuery = (term = 'react') => {
 
 export async function getTopics(searchTerm?: string): Promise<any> {
   const query = makeSearchQuery(searchTerm);
-  console.log(query);
   const response = await request(query);
   return response;
 }
