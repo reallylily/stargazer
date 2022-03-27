@@ -19,6 +19,8 @@ const defaultGQL = gql`
   }
 `;
 
-export default function request(query = defaultGQL): Promise<any> {
+export function request(query = defaultGQL): Promise<any> {
   return graphQLClient.request(query);
 }
+
+export default request;

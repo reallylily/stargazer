@@ -15,10 +15,10 @@ export const Topic: React.FC = () => {
     return <Loading />;
   }
 
-  if (!isLoading && !data) {
-    return <div>Sorry no topics availible for that search</div>;
-  }
-  console.log(data);
+  // if (!isLoading && !data) {
+  //   return <div>Sorry no topics availible for that search</div>;
+  // }
+  // console.log(data);
   return (
     <div className={styles.search}>
       {data && <div>{data.topic?.name}</div>}

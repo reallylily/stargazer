@@ -1,53 +1,17 @@
 import { AxiosError } from 'axios';
-import { gql } from 'graphql-request';
 import { UseMutateFunction, useMutation, useQueryClient } from 'react-query';
 
-import request from 'api/index';
+import { getSearch } from './search';
+import { ApiTopic } from './types';
 import { getFriendlyError } from 'utils/error';
 
-// import { PlatformConfig } from 'config';
-
-export const QUERY_KEY = 'topic';
-export interface ApiTopic {
-  topic: Topic;
-}
-
-export interface Topic {
-  id: string;
-  name: string;
-  relatedTopics?: Topic[];
-  stargazerCount: number;
-}
-
+export const QUERY_KEY = 'search';
 export interface UseSearch {
   data?: ApiTopic;
   error?: string;
   isLoading: boolean;
   search: UseMutateFunction<ApiTopic, AxiosError, string>;
   clear: () => void;
-}
-
-const makeSearchQuery = (term = 'react') => {
-  return gql`
-      query {
-        topic(name: "${term}") {
-          id
-          name
-          relatedTopics(first: 10) {
-            name
-            id
-            stargazerCount
-          }
-          stargazerCount
-        }
-      }
-  `;
-};
-
-export async function getSearch(searchTerm?: string): Promise<ApiTopic> {
-  const query = makeSearchQuery(searchTerm);
-  const response = await request(query);
-  return response;
 }
 
 export const useSearch = (): UseSearch => {
