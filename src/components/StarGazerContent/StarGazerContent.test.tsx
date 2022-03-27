@@ -1,10 +1,10 @@
 import React from 'react';
 
-import Topic from './Topic';
+import { StarGazerContent } from './StarGazerContent';
 
 const AppTest = () => (
   // <TestProviders authProviderProps={{ loading: props.loading }}>
-  <Topic />
+  <StarGazerContent />
   // </TestProviders>
 );
 

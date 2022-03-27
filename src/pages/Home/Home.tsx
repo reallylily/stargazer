@@ -1,27 +1,32 @@
 import React from 'react';
 
 import styles from './Home.module.scss';
-import Stars from 'components/Stars/Stars';
-import Topic from 'components/Topic/Topic';
+import { StarGazerContent } from 'components/StarGazerContent/StarGazerContent';
+import { Stars } from 'components/Stars/Stars';
 
 export const Home: React.FC = () => {
   return (
     <div className={styles.home}>
       <div className="title">STARGAZER by LILY</div>
-      <Topic />
+      <StarGazerContent />
       {/* 
-        Topic
-          search bar *react-select 
-            autocomplete
+        StarGazerContent
+          Search 
+            SearchBar *react-select 
+              autocomplete
+            SearchButton
           Topic
-            info
+            name
             link to github
-          TopicList
-            Topic 
+            stargazer count
+          RelatedTopicList
+            RelatedItem
+              name
               StargazerCount
               link to search
-            Topic 
-            Topic 
+            RelatedItem
+            RelatedItem
+ 
 
         LoadingPage
       */}
