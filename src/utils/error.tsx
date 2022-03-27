@@ -2,12 +2,8 @@ import { AxiosError, Method } from 'axios';
 
 const getAction = (method: Method | string) => {
   switch (method.toLocaleLowerCase()) {
-    case 'get':
-      return 'retrieving';
-    case 'post' || 'put':
-      return 'submitting';
     default:
-      return 'submitting';
+      return 'finding';
   }
 };
 
