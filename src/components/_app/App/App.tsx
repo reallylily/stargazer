@@ -7,17 +7,28 @@ import ErrorBoundary from 'components/_app/ErrorBoundary/ErrorBoundary';
 // import styles from './App.module.scss';
 
 export const App: React.FC = () => {
-  const { data, isLoading, error } = useSearch();
+  const [searchTerm, setSearchTerm] = React.useState<string>('react');
+  const { data, isLoading, isFetched, error, reload } = useSearch(searchTerm);
+  // const clickHandler = (e: Event) => {
+  //   e.preventDefault();
+  //   console.log('didnt break');
+  //   search('hello');
+  // };
   return (
     <div className="App">
       <header className="App-header">
-        {console.log(data, isLoading, error)}
-        <p>
-          Edit <code>src/App.js</code> and save to heeeeeeeere.
-        </p>
-        <a className="App-link" href="https://reactjs.org" target="_blank" rel="noopener noreferrer">
-          Learn React
-        </a>
+        {console.log(data?.topic?.name, isLoading, error)}
+        {isFetched && <div>{data?.topic?.name}</div>}
+        <button
+          type="button"
+          onClick={(e) => {
+            e.preventDefault();
+            setSearchTerm('github');
+            reload();
+          }}
+        >
+          Search
+        </button>
       </header>
     </div>
   );
