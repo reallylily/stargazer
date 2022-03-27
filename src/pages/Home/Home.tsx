@@ -1,12 +1,13 @@
 import React from 'react';
 
+import styles from './Home.module.scss';
+import Search from 'components/Search/Search';
 import Stars from 'components/Stars/Stars';
-
-// import styles from './App.module.scss';
 
 export const Home: React.FC = () => {
   return (
     <div className="Home">
+      <Search />
       {/* 
         Search
           search bar *react-select 
