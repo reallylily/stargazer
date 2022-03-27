@@ -1,6 +1,6 @@
 import { AxiosError } from 'axios';
 import { gql } from 'graphql-request';
-import { UseMutateFunction, useMutation, useQuery, useQueryClient } from 'react-query';
+import { useQuery, useQueryClient } from 'react-query';
 
 import request from 'api/index';
 import { getFriendlyError } from 'utils/error';
