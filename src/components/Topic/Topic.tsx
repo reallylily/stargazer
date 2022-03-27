@@ -15,12 +15,13 @@ export const Topic: React.FC = () => {
     return <Loading />;
   }
 
-  // if (!data) {
-  //   return <div>Sorry no topics availible for that search</div>;
-  // }
+  if (!isLoading && !data) {
+    return <div>Sorry no topics availible for that search</div>;
+  }
+  console.log(data);
   return (
     <div className={styles.search}>
-      {data && <div>{data?.topic?.name}</div>}
+      {data && <div>{data.topic?.name}</div>}
       <button className={styles.button} type="button" onClick={clickHandler}>
         Search
       </button>

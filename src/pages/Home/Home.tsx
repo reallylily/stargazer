@@ -10,10 +10,9 @@ export const Home: React.FC = () => {
       <div className="title">STARGAZER by LILY</div>
       <Topic />
       {/* 
-        Search
+        Topic
           search bar *react-select 
             autocomplete
-            debounce
           Topic
             info
             link to github

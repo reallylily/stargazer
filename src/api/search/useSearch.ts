@@ -1,6 +1,6 @@
 import { AxiosError } from 'axios';
 import { gql } from 'graphql-request';
-import { UseMutateFunction, useMutation, useQuery, useQueryClient } from 'react-query';
+import { UseMutateFunction, useMutation, useQueryClient } from 'react-query';
 
 import request from 'api/index';
 import { getFriendlyError } from 'utils/error';
@@ -9,10 +9,14 @@ import { getFriendlyError } from 'utils/error';
 
 export const QUERY_KEY = 'topic';
 export interface ApiTopic {
-  topic: any;
-  data: {
-    topic: unknown;
-  };
+  topic: Topic;
+}
+
+export interface Topic {
+  id: string;
+  name: string;
+  relatedTopics?: Topic[];
+  stargazerCount: number;
 }
 
 export interface UseSearch {
