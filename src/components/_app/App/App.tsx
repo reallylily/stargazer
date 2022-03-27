@@ -1,33 +1,20 @@
 import React from 'react';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import 'theme/style.scss'; // must be imported before App
 
-import useTopics from 'api/topics/useTopics';
 import ApiProvider from 'components/_app/ApiProvider/ApiProvider';
-import ErrorBoundary from 'components/_app/ErrorBoundary/ErrorBoundary';
+import Main from 'pages/Main/Main';
 
-// import styles from './App.module.scss';
-
-export const App: React.FC = () => {
-  const { data, isLoading, error } = useTopics();
+const App: React.FC = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        {console.log(data, isLoading, error)}
-        <p>
-          Edit <code>src/App.js</code> and save to heeeeeeeere.
-        </p>
-        <a className="App-link" href="https://reactjs.org" target="_blank" rel="noopener noreferrer">
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ApiProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Main />} />
+        </Routes>
+      </BrowserRouter>
+    </ApiProvider>
   );
 };
 
-const ConnectedApp: React.FC = () => (
-  <ErrorBoundary>
-    <ApiProvider>
-      <App />
-    </ApiProvider>
-  </ErrorBoundary>
-);
-export default ConnectedApp;
+export default App;

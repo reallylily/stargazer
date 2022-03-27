@@ -7,13 +7,14 @@ import { getFriendlyError } from 'utils/error';
 
 // import { PlatformConfig } from 'config';
 
-export const QUERY_KEY = 'topics';
+export const QUERY_KEY = 'topic';
 
-export interface UseTopics {
+export interface UseSearch {
   data?: any;
   error?: string;
   isLoading: boolean;
   isFetched: boolean;
+  // search: UseMutateFunction<ApiTopics, AxiosError, string>;
   reload: () => void;
 }
 
@@ -40,32 +41,43 @@ export interface ApiTopics {
   };
 }
 
-export async function getTopics(searchTerm?: string): Promise<ApiTopics> {
+export async function getSearch(searchTerm?: string): Promise<ApiTopics> {
+  console.log(searchTerm);
   const query = makeSearchQuery(searchTerm);
   const response = await request(query);
   return response;
 }
 
-export const useTopics = (searchTerm?: string): UseTopics => {
+export const useSearch = (searchTerm?: string): UseSearch => {
   const queryClient = useQueryClient();
 
   const { isLoading, isFetched, error, data } = useQuery<ApiTopics, AxiosError, ApiTopics>(
     [QUERY_KEY, searchTerm],
-    () => getTopics(searchTerm),
-    {},
+    () => getSearch(searchTerm),
+    { enabled: Boolean(searchTerm) },
   );
 
   const invalidateQueries = () => {
     queryClient.invalidateQueries(QUERY_KEY);
   };
 
+  // const {
+  //   mutate,
+  //   error: searchError,
+  //   isLoading: isSearching,
+  // } = useMutation<ApiTopics, AxiosError, string>([QUERY_KEY, searchTerm], () => getSearch(searchTerm), {
+  //   // } = useMutation<ApiTopics, AxiosError, string>([QUERY_KEY, searchTerm], () => getSearch(searchTerm), {
+  //   // onSuccess: invalidateQueries,
+  // });
+
   return {
     data,
     error: getFriendlyError(error, 'topics'),
     isLoading,
     isFetched,
+    // search: mutate,
     reload: invalidateQueries,
   };
 };
 
-export default useTopics;
+export default useSearch;
