@@ -1,39 +1,56 @@
 @import 'src/theme/style.scss';
 
-.search {
+.topic {
   // color: $yellow;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.button {
+  border: 20px solid gray;
   box-sizing: border-box;
   background-color: transparent;
-  border: 2px solid $blue;
-  border-radius: 0.6em;
-  cursor: pointer;
-  font-weight: 400;
-  line-height: 1;
-  margin: 0.5rem;
+  text-decoration-color: whitesmoke;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  ;
 
-  padding: 1em 2.8em;
-  text-decoration: none;
-  text-transform: uppercase;
-  font-weight: 700;
-  color: #fff;
-
-  box-shadow: 0 0 10px 0 $blue inset, 0 0 10px 4px $blue;
-  &:hover,
-  &:focus {
-    color: #fff;
-    outline: 0;
-  }
 
   &:hover {
     border-color: $blue;
+    background: grey;
     color: #fff;
     box-shadow: 0 0 40px 40px $blue inset, 0 0 0 0 $blue;
     transition: all 150ms ease-in-out;
   }
 }
+
+
+.name{
+  font-size: 3;
+  text-align: center;
+  
+
+  :link{
+    color:whitesmoke
+  }
+  // lh-condensed mb-0 mt-1
+}
+
+// <div class="topic-box position-relative hover-grow height-full text-center border color-border-muted rounded color-bg-default p-5">
+//     <div class="js-toggler-container starring-container">
+//     <!-- '"` --><!-- </textarea></xmp> --><form data-turbo="false" class="button_to" method="post" action="/topics/angular/unstar"><input type="hidden" name="_method" value="delete" autocomplete="off">
+//     <button class="position-absolute top-0 right-0 hover-grow mt-3 mr-3 
+//     tooltipped tooltipped-n color-bg-default js-toggler-target starred js-remote-submit-button" aria-label="Unstar Angular" type="submit">
+//       <svg height="20" aria-hidden="true" viewBox="0 0 16 16" version="1.1" width="20" data-view-component="true" class="octicon octicon-star-fill">
+// </button><input type="hidden" name="authenticity_token" value="fzQvhFTcCmU7YwJw2-OWpw3bIQJiOv5Hjcy8JOYQc1vW2AGVFuA8g05dvAeojoOraJErpd4WSdsMd-aAUUZrow"></form>
+//     <!-- '"` --><!-- </textarea></xmp> --><form data-turbo="false" class="button_to" method="post" action="/topics/angular/star"><button class="position-absolute top-0 right-0 hover-grow mt-3 mr-3 tooltipped tooltipped-n color-bg-default js-toggler-target unstarred js-remote-submit-button" aria-label="Star Angular" type="submit">
+//       <svg height="20" aria-hidden="true" viewBox="0 0 16 16" version="1.1" width="20" data-view-component="true" class="octicon octicon-star">
+// </svg><span class="d-none">Star</span>
+// </button><input type="hidden" ></form></div>
+
+
+//     <a href="/topics/angular" class="no-underline d-flex flex-column flex-justify-center" data-ga-click="Explore, go to topic, text:angular; location:boxes">
+//         <img src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/angular/angular.png" width="64" height="64" class="mx-auto rounded mb-3" alt="angular">
+//       <p class="f3 lh-condensed text-center Link--primary mb-0 mt-1">
+//         Angular
+//       </p>
+//       <p class="f5 color-fg-muted text-center mb-0 mt-1">Angular is an open source web application platform.</p>
+//     </a>
+//   </div>
