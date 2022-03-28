@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Select } from './Select';
+import { Search } from './Search';
 
 // const AppTest = () => (
 //   // <TestProviders authProviderProps={{ loading: props.loading }}>

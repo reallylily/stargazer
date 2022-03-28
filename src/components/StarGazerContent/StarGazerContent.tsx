@@ -2,7 +2,7 @@ import React from 'react';
 
 import styles from './StarGazerContent.module.scss';
 import useSearch from 'api/search/useSearch';
-import Select from 'components/Select/Select';
+import Search from 'components/Search/Search';
 import Topic from 'components/Topic/Topic';
 import Loading from 'pages/Loading/Loading';
 
@@ -14,10 +14,10 @@ export const StarGazerContent: React.FC = () => {
     // error
   } = useSearch();
 
-  const [searchTerm, setSearchTerm] = React.useState<string>('react');
-  const clickHandler = () => {
-    search(searchTerm);
-  };
+  // const [searchTerm, setSearchTerm] = React.useState<string>('react');
+  // const clickHandler = () => {
+  //   search(searchTerm);
+  // };
 
   if (isLoading) {
     return <Loading />;
@@ -26,14 +26,14 @@ export const StarGazerContent: React.FC = () => {
   // if (!isLoading && !data) {
   //   return <div>Sorry no StarGazerContents availible for that search</div>;
   // }
-
+  console.log(data);
   return (
     <div>
       <div className={styles.search}>
-        <Select setSearchTerm={setSearchTerm} />
-        <button className={styles.button} type="button" onClick={clickHandler}>
+        <Search search={search} />
+        {/* <button className={styles.button} type="button" onClick={clickHandler}>
           Search
-        </button>
+        </button> */}
       </div>
       {data && <Topic topic={data.topic} />}
     </div>
