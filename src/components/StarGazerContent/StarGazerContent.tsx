@@ -30,8 +30,7 @@ export const StarGazerContent: React.FC = () => {
           Search
         </button>
       </div>
-      <Topic topic={data} />
-      {data && <div>{data.topic?.name}</div>}
+      {data && <Topic topic={data.topic} />}
     </div>
   );
 };
