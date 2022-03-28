@@ -6,7 +6,12 @@ import Select from 'components/Select/Select';
 import Loading from 'pages/Loading/Loading';
 
 export const StarGazerContent: React.FC = () => {
-  const { data, isLoading, search } = useSearch();
+  const {
+    data,
+    isLoading,
+    search,
+    // error
+  } = useSearch();
 
   const [searchTerm, setSearchTerm] = React.useState<string>('react');
   const clickHandler = () => {
@@ -20,7 +25,7 @@ export const StarGazerContent: React.FC = () => {
   // if (!isLoading && !data) {
   //   return <div>Sorry no StarGazerContents availible for that search</div>;
   // }
-  console.log(data);
+  // console.log(data, error);
 
   return (
     <div>
