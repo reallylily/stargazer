@@ -23,5 +23,5 @@ const makeSearchQuery = (term?: string) => {
 export async function getSearch(searchTerm?: string): Promise<ApiTopic> {
   const query = makeSearchQuery(searchTerm);
   const response = await request(query);
-  return response;
+  return response as ApiTopic;
 }

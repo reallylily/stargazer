@@ -1,9 +1,11 @@
 import { gql, GraphQLClient } from 'graphql-request';
 
-// import { PlatformConfig } from 'config';
+import { PlatformConfig } from 'config';
 
-const endpoint = `https://api.github.com/graphql`;
-const token = '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';
+const { baseApiUrl } = PlatformConfig;
+
+const endpoint = `${baseApiUrl}/graphql`;
+const token = process.env.REACT_APP_GITHUB_API_KEY;
 
 const graphQLClient = new GraphQLClient(endpoint, {
   headers: {
@@ -19,7 +21,7 @@ const defaultGQL = gql`
   }
 `;
 
-export function request(query = defaultGQL): Promise<any> {
+export function request(query = defaultGQL): Promise<unknown> {
   return graphQLClient.request(query);
 }
 
