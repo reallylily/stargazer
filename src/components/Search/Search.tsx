@@ -47,7 +47,7 @@ export const Search: React.FC<Props> = (props: Props) => {
   }, [selectedOption, setValue]);
 
   useEffect(() => {
-    if (input && !selectedOption) {
+    if (input) {
       setValue(input);
     }
   }, [input, selectedOption, setValue]);
