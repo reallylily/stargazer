@@ -1,5 +1,5 @@
 import { AxiosError } from 'axios';
-import { UseMutateFunction, useMutation, useQueryClient } from 'react-query';
+import { useQuery, useQueryClient } from 'react-query';
 
 import { getSearch } from './search';
 import { ApiTopic } from './types';
@@ -10,24 +10,26 @@ export interface UseSearch {
   data?: ApiTopic;
   error?: string;
   isLoading: boolean;
-  search: UseMutateFunction<ApiTopic, AxiosError, string>;
   clear: () => void;
 }
 
-export const useSearch = (): UseSearch => {
+export const useSearch = (name = 'react'): UseSearch => {
   const queryClient = useQueryClient();
 
   const invalidateQueries = () => {
     queryClient.invalidateQueries(QUERY_KEY);
   };
 
-  const { data, mutate, error, isLoading } = useMutation<ApiTopic, AxiosError, string>([QUERY_KEY], getSearch, {});
+  const { data, error, isLoading } = useQuery<ApiTopic, AxiosError, ApiTopic>(
+    [QUERY_KEY, name],
+    () => getSearch(name),
+    {},
+  );
 
   return {
     data,
     error: getFriendlyError(error, 'topics'),
     isLoading,
-    search: mutate,
     clear: invalidateQueries,
   };
 };

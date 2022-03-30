@@ -10,23 +10,23 @@ import Topic from 'components/Topic/Topic';
 import Loading from 'pages/Loading/Loading';
 
 export const StarGazerContent: React.FC = () => {
-  const { data, isLoading, search, error } = useSearch();
+  const [name, setName] = React.useState<string>('react');
+
+  const { data, isLoading, error } = useSearch(name);
 
   if (isLoading) {
     return <Loading />;
   }
 
   return (
-    <div>
-      <div className={styles.stargazer}>
-        <Error error={error} />
-        <div>STARGAZER by LILY</div>
-        <Search search={search} />
-        {data && <Topic topic={data.topic} />}
-        {data && <RelatedTopicList relatedTopics={data.topic?.relatedTopics || []} search={search} />}
+    <div className={styles.stargazer}>
+      <Error error={error} />
+      <div>STARGAZER by LILY</div>
+      <Search search={setName} />
+      {data && <Topic topic={data.topic} />}
+      {data && <RelatedTopicList relatedTopics={data.topic?.relatedTopics || []} search={setName} />}
 
-        <Stars />
-      </div>
+      <Stars />
     </div>
   );
 };

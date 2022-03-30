@@ -1,11 +1,8 @@
-import { AxiosError } from 'axios';
 import React, { useEffect } from 'react';
-import { UseMutateFunction } from 'react-query';
 import ReactSelect, { StylesConfig } from 'react-select';
 
 import styles from './Search.module.scss';
 import { options } from './data';
-import ApiTopic from 'api/search/types';
 
 interface Option {
   value: string;
@@ -25,7 +22,7 @@ const customStyles: StylesConfig = {
 };
 
 type Props = {
-  search: UseMutateFunction<ApiTopic, AxiosError, string>;
+  search: React.Dispatch<React.SetStateAction<string>>;
 };
 
 export const Search: React.FC<Props> = (props: Props) => {

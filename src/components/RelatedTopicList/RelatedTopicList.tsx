@@ -18,7 +18,7 @@ export const RelatedTopicList: React.FC<Props> = (props: Props) => {
 
   return (
     <div>
-      <div className={styles.title}>Related Topics</div>
+      {Boolean(topics.length) && <div className={styles.title}>Related Topics</div>}
       <ul>{topics}</ul>
     </div>
   );
