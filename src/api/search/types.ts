@@ -1,5 +1,5 @@
 export interface ApiTopic {
-  topic: Topic;
+  topic: Topic | null;
 }
 
 export interface Topic {
