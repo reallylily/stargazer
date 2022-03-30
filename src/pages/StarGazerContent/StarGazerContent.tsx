@@ -20,7 +20,6 @@ export const StarGazerContent: React.FC = () => {
     return <Loading />;
   }
 
-  console.log(data);
   return (
     <div>
       <div className={styles.stargazer}>
@@ -28,27 +27,6 @@ export const StarGazerContent: React.FC = () => {
         <Search search={search} />
         {data && <Topic topic={data.topic} />}
         {data && <RelatedTopicList relatedTopics={data.topic?.relatedTopics || []} search={search} />}
-        {/* 
-        StarGazerContent
-          Search 
-            SearchBar *react-select 
-              autocomplete
-            SearchButton
-          Topic
-            name
-            link to github
-            stargazer count
-          RelatedTopicList
-            RelatedItem
-              name
-              StargazerCount
-              link to search
-            RelatedItem
-            RelatedItem
- 
-
-        LoadingPage
-      */}
 
         <Stars />
       </div>
