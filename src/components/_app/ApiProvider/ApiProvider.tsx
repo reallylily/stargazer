@@ -20,7 +20,12 @@ const ApiProvider: React.FC<Props> = ({ children }: Props) => {
     },
   });
 
-  return <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>;
+  return (
+    <QueryClientProvider client={queryClient}>
+      {children}
+      {/* <ReactQueryDevtools initialIsOpen={false} /> */}
+    </QueryClientProvider>
+  );
 };
 
 export default ApiProvider;

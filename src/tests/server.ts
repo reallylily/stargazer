@@ -1,6 +1,6 @@
-import { setupWorker } from 'msw';
+// import { setupWorker } from 'msw';
 
-import { PlatformConfig } from 'config';
+// import { PlatformConfig } from 'config';
 import { setupServer } from 'msw/node';
 import handlers from 'tests/handlers';
 

@@ -1,20 +1,19 @@
+import { render } from '@testing-library/react';
 import React from 'react';
 
-import { StarGazerContent } from './StarGazerContent';
+import StarGazer from './StarGazerContent';
+import TestProviders from 'tests/TestProviders';
 
-const AppTest = () => (
-  // <TestProviders authProviderProps={{ loading: props.loading }}>
-  <StarGazerContent />
-  // </TestProviders>
+const StarGazerTest = () => (
+  <TestProviders>
+    <StarGazer />
+  </TestProviders>
 );
 
-describe('App', () => {
+describe('StarGazer', () => {
   it('renders without crashing', async () => {
-    // const wrapper = await waitForComponent(<AppTest />);
-    // expect(wrapper).toBeDefined();
-  });
-  it('displays loader', async () => {
-    // const wrapper = await waitForComponent(<AppTest loading />);
-    // expect(wrapper.find(LoadingPage).length).toEqual(1);
+    const component = await render(<StarGazerTest />);
+    const content = await component.findByText('STARGAZER by LILY');
+    expect(content).toBeInTheDocument();
   });
 });

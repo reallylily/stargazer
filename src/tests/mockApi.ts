@@ -1,5 +1,6 @@
 import { rest, RestHandler, RestRequest, RestContext, ResponseComposition } from 'msw';
 
+// import { Decorator } from 'stories/types';
 import { server } from 'tests/server';
 
 export const mockApiResponse = (
@@ -22,3 +23,15 @@ export const mockApiResponse = (
       return rest.get(endpointRegExp, func);
   }
 };
+
+// export const mockApiDecorator = (
+//   endpoint: string | RegExp = '/',
+//   body: unknown,
+//   method = 'get',
+//   status = 200,
+// ): Decorator => {
+//   return (story) => {
+//     // server.use(mockApiResponse(endpoint, body, method, status));
+//     return story();
+//   };
+// };
