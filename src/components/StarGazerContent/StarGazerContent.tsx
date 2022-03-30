@@ -1,6 +1,6 @@
 import React from 'react';
 
-import styles from './StarGazerContent.module.scss';
+// import styles from './StarGazerContent.module.scss';
 import useSearch from 'api/search/useSearch';
 import Search from 'components/Search/Search';
 import Topic from 'components/Topic/Topic';
@@ -14,28 +14,15 @@ export const StarGazerContent: React.FC = () => {
     // error
   } = useSearch();
 
-  // const [searchTerm, setSearchTerm] = React.useState<string>('react');
-  // const clickHandler = () => {
-  //   search(searchTerm);
-  // };
-
   if (isLoading) {
     return <Loading />;
   }
 
-  // if (!isLoading && !data) {
-  //   return <div>Sorry no StarGazerContents availible for that search</div>;
-  // }
   console.log(data);
   return (
     <div>
-      <div className={styles.search}>
-        <Search search={search} />
-        {/* <button className={styles.button} type="button" onClick={clickHandler}>
-          Search
-        </button> */}
-      </div>
-      {data && <Topic topic={data.topic} />}
+      <Search search={search} />
+      {data && <Topic topic={data?.topic} />}
     </div>
   );
 };
