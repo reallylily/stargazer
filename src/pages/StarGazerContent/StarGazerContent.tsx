@@ -2,6 +2,7 @@ import React from 'react';
 
 import styles from './StarGazerContent.module.scss';
 import useSearch from 'api/search/useSearch';
+import RelatedTopicList from 'components/RelatedTopicList/RelatedTopicList';
 import Search from 'components/Search/Search';
 import Stars from 'components/Stars/Stars';
 import Topic from 'components/Topic/Topic';
@@ -23,9 +24,10 @@ export const StarGazerContent: React.FC = () => {
   return (
     <div>
       <div className={styles.stargazer}>
-        <div className="title">STARGAZER by LILY</div>
+        <div>STARGAZER by LILY</div>
         <Search search={search} />
-        {data && <Topic topic={data?.topic} />}
+        {data && <Topic topic={data.topic} />}
+        {data && <RelatedTopicList relatedTopics={data.topic?.relatedTopics || []} search={search} />}
         {/* 
         StarGazerContent
           Search 

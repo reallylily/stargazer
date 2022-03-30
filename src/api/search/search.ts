@@ -7,14 +7,12 @@ const makeSearchQuery = (term?: string) => {
   return gql`
         query {
           topic(name: "${term}") {
-            id
             name
+            stargazerCount
             relatedTopics(first: 10) {
               name
-              id
               stargazerCount
             }
-            stargazerCount
           }
         }
     `;
