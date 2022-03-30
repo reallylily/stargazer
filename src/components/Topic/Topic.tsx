@@ -26,12 +26,12 @@ export const Topic: React.FC<Props> = (props: Props) => {
   return (
     <div className={styles.topic}>
       <div>
-        <div className={styles.content}>{name}</div>
-        <a href={`https://github.com/topics/${name}`} target="_blank" rel="noreferrer" className={styles.content}>
+        <div className={styles.name}>{name}</div>
+        <a href={`https://github.com/topics/${name}`} target="_blank" rel="noreferrer" className={styles.link}>
           Read more on Github
         </a>
       </div>
-      <div className={styles.content}>
+      <div>
         <AiFillStar /> {stargazerCount} stargazers
       </div>
     </div>

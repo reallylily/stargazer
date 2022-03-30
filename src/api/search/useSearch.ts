@@ -22,6 +22,7 @@ export const useSearch = (): UseSearch => {
   };
 
   const { data, mutate, error, isLoading } = useMutation<ApiTopic, AxiosError, string>([QUERY_KEY], getSearch, {});
+
   return {
     data,
     error: getFriendlyError(error, 'topics'),

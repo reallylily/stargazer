@@ -4,17 +4,16 @@
   margin: 0px 7vw;
   padding: 1rem;
   font-size: large;
-  box-shadow: 0 0 5px 0 $grey inset, 0 0 7px 4px $grey;
-
-  // background-color: transparent;
-  // text-decoration-color: whitesmoke;
-  // text-align: center;
+  box-shadow: 0 0 5px 0 $starlight inset, 0 0 7px 4px $starlight;
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
   text-align: left;
 }
 
-.content {
+.name {
   padding-bottom: 7px;
+}
+.link {
+  color: $blue;
 }
