@@ -2,11 +2,11 @@ import React from 'react';
 
 import Loading from './Loading';
 
-const AppTest = (props: { loading?: boolean }) => (
-  // <TestProviders authProviderProps={{ loading: props.loading }}>
-  <Loading />
-  // </TestProviders>
-);
+// const AppTest = (props: { loading?: boolean }) => (
+//   // <TestProviders authProviderProps={{ loading: props.loading }}>
+//   <Loading />
+//   // </TestProviders>
+// );
 
 describe('App', () => {
   it('renders without crashing', async () => {
