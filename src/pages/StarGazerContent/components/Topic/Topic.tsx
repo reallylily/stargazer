@@ -11,7 +11,7 @@ export type Props = {
 export const Topic: React.FC<Props> = (props: Props) => {
   const { topic } = props;
 
-  if (!topic) {
+  if (!topic || (topic?.stargazerCount === 0 && topic.relatedTopics?.length === 0)) {
     return (
       <div className={styles.topic}>
         We couldnt find a topic with that name!
