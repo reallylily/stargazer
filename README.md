@@ -22,17 +22,13 @@ To start, insert a [Github API key](https://docs.github.com/en/free-pro-team@lat
 
 The app will default to using the [GitHub GraphQL API](https://docs.github.com/en/graphql).
 
-To run against a local instance of a GraphQL API, copy `.env.example` to `.env` and set `REACT_APP_API_HOST=http://localhost:4000`.
-
 To set up, insert a [Github API key](https://docs.github.com/en/free-pro-team@latest/graphql/guides/forming-calls-with-graphql#authenticating-with-graphql) into your `.env` at `REACT_APP_GITHUB_API_KEY=`.
 
 - Any valid key can be used and does not require any special permissions. If you'd like a default key feel free to ping me and I can provide one.
 
 ## Run the App
 
-### Live Reload
-
-#### Web
+### Web
 
 `yarn start`
 
@@ -78,17 +74,17 @@ I used this basic outline as a feature roadmap when designing the app.
 
 Bc the app has relatively limited functionality I went with the theme of "boutique" data visualizer.
 
-#### Content Page:
+### Content Page:
 
 The Content Page holds the state that manages api calls and github data. Functionality is divided into three main catagories: Search, Topic, and Related Topics.
 
 Search calls, Cached data, loading state, and error state for this page are all managed with [React Query](https://react-query.tanstack.com/)
 
-#### Search:
+### Search:
 
 The Search Component leverages [React Select](https://react-select.com/home) for managing autocomplete for popular searchable topics.
 
-#### Topic & Related Topics:
+### Topic & Related Topics:
 
 The Topic Components are straight forward display components. They use a `setState` fnc passed as a prop to trigger `StargazerContentPage` calls and rerenders.
 
