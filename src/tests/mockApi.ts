@@ -24,6 +24,19 @@ export const mockApiResponse = (
   }
 };
 
+// Handles a "GetUserInfo" query
+// graphql.query('GetUserInfo', (req, res, ctx) => {
+
+//   // When authenticated, respond with a query payload
+//   return res(
+//     ctx.data({
+//       user: {
+//         username: authenticatedUser,
+//         firstName: 'John',
+//       },
+//     }),
+//   )
+// }),
 // export const mockApiDecorator = (
 //   endpoint: string | RegExp = '/',
 //   body: unknown,

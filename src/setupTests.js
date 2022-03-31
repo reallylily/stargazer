@@ -14,10 +14,13 @@ configure({ adapter: new Adapter() });
 
 // test setup for MSW and react-query (and scrollIntoView)
 beforeAll(() => {
-  server.listen();
+  server.listen({
+    onUnhandledRequest: 'warn',
+  });
   queryCache.clear();
-  addRequestListener();
-  addResponseListener();
+  // server.printHandlers();
+  // addRequestListener();
+  // addResponseListener();
 });
 beforeEach(() => {
   HTMLElement.prototype.scrollIntoView = jest.fn();
@@ -48,14 +51,14 @@ afterAll(() => server.close());
 // ingore console.error
 console.error = jest.fn();
 
-// mock system date
-LocalDate.now = () => LocalDate.of(2020, 3, 23);
-MockDate.set(new Date('Mon Mar 23 2020 12:00:00 GMT-0400 (Eastern Daylight Time)'));
+// // mock system date
+// LocalDate.now = () => LocalDate.of(2020, 3, 23);
+// MockDate.set(new Date('Mon Mar 23 2020 12:00:00 GMT-0400 (Eastern Daylight Time)'));
 
-// mock URL.createObjectURL
-if (typeof window.URL.createObjectURL === 'undefined') {
-  Object.defineProperty(window.URL, 'createObjectURL', { value: () => {} });
-}
+// // mock URL.createObjectURL
+// if (typeof window.URL.createObjectURL === 'undefined') {
+//   Object.defineProperty(window.URL, 'createObjectURL', { value: () => {} });
+// }
 
 // // mock window[...].scrollIntoView
 // window.HTMLElement.prototype.scrollIntoView = jest.fn();

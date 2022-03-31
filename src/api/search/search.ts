@@ -5,7 +5,7 @@ import { request } from 'api/index';
 
 const makeSearchQuery = (term?: string) => {
   return gql`
-        query {
+        query GetTopic{
           topic(name: "${term}") {
             name
             stargazerCount

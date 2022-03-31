@@ -6,7 +6,7 @@ interface TestProvidersProps {
   children: React.ReactNode;
 }
 
-const TestProviders: React.FC<TestProvidersProps> = ({ children }: TestProvidersProps) => {
-  return <ApiProvider>{children}</ApiProvider>;
-};
+const TestProviders: React.FC<TestProvidersProps> = ({ children }: TestProvidersProps) => (
+  <ApiProvider>{children}</ApiProvider>
+);
 export default TestProviders;
