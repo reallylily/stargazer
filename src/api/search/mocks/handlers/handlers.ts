@@ -1,5 +1,6 @@
+import { mockSearchResponse } from './data';
 import { mockApiResponse } from 'tests/mockApi';
 
-const handlers = [mockApiResponse(`/`, {}, 'post')];
+export const handlers = [mockApiResponse(`GetTopic`, mockSearchResponse)];
 
 export default handlers;

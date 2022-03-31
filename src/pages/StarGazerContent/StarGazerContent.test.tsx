@@ -3,7 +3,6 @@ import React from 'react';
 
 import StarGazer from './StarGazerContent';
 import TestProviders from 'tests/TestProviders';
-import { server } from 'tests/server';
 
 const StarGazerTest = () => (
   <TestProviders>
@@ -18,7 +17,7 @@ describe('StarGazer', () => {
     expect(content).toBeInTheDocument();
   });
 
-  it('fetchs on search', async () => {
+  it('fetchs react data on load', async () => {
     const component = await render(<StarGazerTest />);
     const react = await component.findByText('react');
     // fireEvent;
