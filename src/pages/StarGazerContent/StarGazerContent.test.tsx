@@ -37,7 +37,7 @@ describe('StarGazer', () => {
       const notDisplayed = component.queryByText('graphql');
       expect(notDisplayed).not.toBeInTheDocument();
 
-      // searches for new data
+      // searches for new topic
       server.use(mockApiResponse(query, mockSearchResponseGraphQL));
       const searchButton = await component.findByText('Search');
       expect(searchButton).toBeInTheDocument();
@@ -45,6 +45,29 @@ describe('StarGazer', () => {
 
       // new data displayed
       const graphql = await component.findByText('graphql');
+      expect(graphql).toBeInTheDocument();
+    });
+  });
+  describe('"navigating"', () => {
+    it('fetchs new data on related topic click', async () => {
+      const component = await render(<StarGazerTest />);
+
+      // default data has been fetched
+      const react = await component.findByText('angular');
+      expect(react).toBeInTheDocument();
+
+      // new data has not been fetched
+      const notDisplayed = component.queryByText('api');
+      expect(notDisplayed).not.toBeInTheDocument();
+
+      // "navigates" to new topic
+      server.use(mockApiResponse(query, mockSearchResponseGraphQL));
+      const angularButton = await component.findByText('angular');
+      expect(angularButton).toBeInTheDocument();
+      fireEvent.click(angularButton);
+
+      // new topic displayed
+      const graphql = await component.findByText('api');
       expect(graphql).toBeInTheDocument();
     });
   });
