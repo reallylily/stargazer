@@ -1,14 +1,12 @@
-import { AxiosError } from 'axios';
 import React from 'react';
 
 import styles from './RelatedTopicList.module.scss';
 import RelatedItem from './components/RelatedItem/RelatedItem';
-import ApiTopic, { Topic } from 'api/search/types';
-import { UseMutateFunction } from 'react-query/types/react/types';
+import { Topic } from 'api/search/types';
 
 export type Props = {
   relatedTopics: Topic[];
-  search: UseMutateFunction<ApiTopic, AxiosError, string>;
+  search: React.Dispatch<React.SetStateAction<string>>;
 };
 
 export const RelatedTopicList: React.FC<Props> = (props: Props) => {

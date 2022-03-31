@@ -1,14 +1,12 @@
-import { AxiosError } from 'axios';
 import React from 'react';
 
 import styles from './RelatedItem.module.scss';
-import ApiTopic, { Topic } from 'api/search/types';
+import { Topic } from 'api/search/types';
 import { AiFillStar } from 'react-icons/ai';
-import { UseMutateFunction } from 'react-query/types/react/types';
 
 export type Props = {
   topic: Topic;
-  search: UseMutateFunction<ApiTopic, AxiosError, string>;
+  search: React.Dispatch<React.SetStateAction<string>>;
 };
 
 export const RelatedItem: React.FC<Props> = (props: Props) => {
