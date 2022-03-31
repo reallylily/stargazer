@@ -1,20 +1,19 @@
+import { render } from '@testing-library/react';
 import React from 'react';
 
 import Loading from './Loading';
+import TestProviders from 'tests/TestProviders';
 
-const AppTest = (props: { loading?: boolean }) => (
-  // <TestProviders authProviderProps={{ loading: props.loading }}>
-  <Loading />
-  // </TestProviders>
+const LoadingTest = () => (
+  <TestProviders>
+    <Loading />
+  </TestProviders>
 );
 
-describe('App', () => {
-  it('renders without crashing', async () => {
-    // const wrapper = await waitForComponent(<AppTest />);
-    // expect(wrapper).toBeDefined();
-  });
-  it('displays loader', async () => {
-    // const wrapper = await waitForComponent(<AppTest loading />);
-    // expect(wrapper.find(LoadingPage).length).toEqual(1);
+describe('Loading Page', () => {
+  it('displays loading message', async () => {
+    const component = await render(<LoadingTest />);
+    const loading = await component.findByText('Catching Stars for your Selection...');
+    expect(loading).toBeInTheDocument();
   });
 });

@@ -4,7 +4,7 @@ import { PlatformConfig } from 'config';
 
 const { baseApiUrl } = PlatformConfig;
 
-const endpoint = `${baseApiUrl}/graphql`;
+export const endpoint = `${baseApiUrl}/graphql`;
 const token = process.env.REACT_APP_GITHUB_API_KEY;
 
 const graphQLClient = new GraphQLClient(endpoint, {
