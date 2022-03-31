@@ -3,7 +3,7 @@ import React from 'react';
 
 import styles from './Error.module.scss';
 
-type Props = {
+export type Props = {
   error?: string;
 };
 

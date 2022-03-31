@@ -6,7 +6,7 @@ import ApiTopic, { Topic } from 'api/search/types';
 import { AiFillStar } from 'react-icons/ai';
 import { UseMutateFunction } from 'react-query/types/react/types';
 
-type Props = {
+export type Props = {
   topic: Topic;
   search: UseMutateFunction<ApiTopic, AxiosError, string>;
 };

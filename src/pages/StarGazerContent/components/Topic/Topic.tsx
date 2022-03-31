@@ -4,7 +4,7 @@ import styles from './Topic.module.scss';
 import { Topic as TopicProp } from 'api/search/types';
 import { AiFillStar } from 'react-icons/ai';
 
-type Props = {
+export type Props = {
   topic: TopicProp | null;
 };
 

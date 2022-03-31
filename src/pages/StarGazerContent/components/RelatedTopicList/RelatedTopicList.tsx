@@ -6,7 +6,7 @@ import RelatedItem from './components/RelatedItem/RelatedItem';
 import ApiTopic, { Topic } from 'api/search/types';
 import { UseMutateFunction } from 'react-query/types/react/types';
 
-type Props = {
+export type Props = {
   relatedTopics: Topic[];
   search: UseMutateFunction<ApiTopic, AxiosError, string>;
 };

@@ -10,8 +10,8 @@ const LoadingTest = () => (
   </TestProviders>
 );
 
-describe('App', () => {
-  it('renders without crashing', async () => {
+describe('Loading Page', () => {
+  it('displays loading message', async () => {
     const component = await render(<LoadingTest />);
     const loading = await component.findByText('Catching Stars for your Selection...');
     expect(loading).toBeInTheDocument();
